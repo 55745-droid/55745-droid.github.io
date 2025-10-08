@@ -1,15 +1,323 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- only the fonts used are downloaded, ref: https://www.w3.org/TR/css-fonts-3/#font-face-loading  -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Geist:wght@100..900&family=Oxanium:wght@200..800&family=Architects+Daughter&family=Space+Grotesk:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&family=Lexend:wght@100..900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Bitter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Geist+Mono:wght@100..900&family=Inconsolata:wght@200..900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Check, Palette, Zap, Shield, Heart, Settings, Menu } from "lucide-react";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen" data-testid="home-page">
+      {/* Header */}
+      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50" data-testid="header">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <h1 className="text-xl font-serif font-semibold text-foreground" data-testid="site-title">
+                Sepia Site
+              </h1>
+            </div>
+            <nav className="hidden md:flex items-center space-x-8" data-testid="nav-desktop">
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-200" data-testid="nav-link-home">
+                Home
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-200" data-testid="nav-link-about">
+                About
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-200" data-testid="nav-link-services">
+                Services
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors duration-200" data-testid="nav-link-contact">
+                Contact
+              </a>
+            </nav>
+            <button className="md:hidden text-foreground" data-testid="button-mobile-menu">
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-20 md:py-32 bg-gradient-to-b from-background to-card" data-testid="hero-section">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground mb-6 leading-tight" data-testid="main-title">
+              Test Text Display
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto" data-testid="hero-description">
+              A clean and minimal layout featuring a beautiful brown and sepia color scheme. 
+              Designed with elegance and simplicity in mind.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button className="px-8 py-3 w-full sm:w-auto" data-testid="button-get-started">
+                Get Started
+              </Button>
+              <Button variant="outline" className="px-8 py-3 w-full sm:w-auto" data-testid="button-learn-more">
+                Learn More
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 md:py-24 bg-background" data-testid="features-section">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4" data-testid="features-title">
+                Features & Highlights
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto" data-testid="features-description">
+                Discover what makes this design special with its warm, earthy aesthetic
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="hover:shadow-lg transition-shadow duration-200" data-testid="card-feature-1">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <Palette className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-2" data-testid="feature-title-1">Clean Design</h3>
+                  <p className="text-muted-foreground" data-testid="feature-description-1">
+                    Minimalist approach with focus on content and readability
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow duration-200" data-testid="card-feature-2">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
+                    <Settings className="w-6 h-6 text-accent-foreground" />
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-2" data-testid="feature-title-2">Responsive</h3>
+                  <p className="text-muted-foreground" data-testid="feature-description-2">
+                    Fully responsive design that works beautifully on all devices
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow duration-200" data-testid="card-feature-3">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <Palette className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-2" data-testid="feature-title-3">Sepia Tones</h3>
+                  <p className="text-muted-foreground" data-testid="feature-description-3">
+                    Warm, nostalgic color palette with brown and sepia hues
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow duration-200" data-testid="card-feature-4">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-accent-foreground" />
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-2" data-testid="feature-title-4">Fast Performance</h3>
+                  <p className="text-muted-foreground" data-testid="feature-description-4">
+                    Optimized for speed with efficient CSS and minimal JavaScript
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow duration-200" data-testid="card-feature-5">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <Shield className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-2" data-testid="feature-title-5">Accessibility</h3>
+                  <p className="text-muted-foreground" data-testid="feature-description-5">
+                    Built with accessibility in mind following WCAG standards
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow duration-200" data-testid="card-feature-6">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4">
+                    <Heart className="w-6 h-6 text-accent-foreground" />
+                  </div>
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-2" data-testid="feature-title-6">User Friendly</h3>
+                  <p className="text-muted-foreground" data-testid="feature-description-6">
+                    Intuitive interface designed for the best user experience
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-16 md:py-24 bg-card" data-testid="content-section">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <article className="prose prose-lg max-w-none">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6" data-testid="content-title">
+                About This Design
+              </h2>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed" data-testid="content-paragraph-1">
+                This website showcases a beautiful brown and sepia color scheme that evokes warmth, 
+                nostalgia, and timeless elegance. The design philosophy centers around minimalism 
+                and clarity, ensuring that content takes center stage while maintaining visual appeal.
+              </p>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed" data-testid="content-paragraph-2">
+                The sepia-toned background creates a vintage aesthetic that's both professional and 
+                inviting. Every element has been carefully crafted to work harmoniously within the 
+                brown color palette, from the deepest chocolate tones to the lightest cream accents.
+              </p>
+              
+              <div className="bg-background rounded-lg p-6 border-l-4 border-primary my-8" data-testid="design-principle-quote">
+                <p className="text-foreground font-medium mb-2" data-testid="quote-label">Design Principle:</p>
+                <p className="text-muted-foreground italic" data-testid="quote-text">
+                  "Simplicity is the ultimate sophistication. A minimal design with maximum impact."
+                </p>
+              </div>
+
+              <h3 className="text-2xl font-serif font-semibold text-foreground mb-4 mt-8" data-testid="elements-title">
+                Key Design Elements
+              </h3>
+              <ul className="space-y-3 text-muted-foreground" data-testid="elements-list">
+                <li className="flex items-start">
+                  <Check className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <span>Warm brown and sepia color palette throughout</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <span>Clean typography using classic serif fonts</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <span>Generous whitespace for improved readability</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <span>Responsive layout that adapts to all screen sizes</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <span>Subtle transitions and hover effects for interactivity</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 md:py-24 bg-background" data-testid="stats-section">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center" data-testid="stat-1">
+                <div className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2" data-testid="stat-value-1">100%</div>
+                <div className="text-muted-foreground" data-testid="stat-label-1">Responsive</div>
+              </div>
+              <div className="text-center" data-testid="stat-2">
+                <div className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2" data-testid="stat-value-2">24/7</div>
+                <div className="text-muted-foreground" data-testid="stat-label-2">Availability</div>
+              </div>
+              <div className="text-center" data-testid="stat-3">
+                <div className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2" data-testid="stat-value-3">Fast</div>
+                <div className="text-muted-foreground" data-testid="stat-label-3">Performance</div>
+              </div>
+              <div className="text-center" data-testid="stat-4">
+                <div className="text-4xl md:text-5xl font-serif font-bold text-primary mb-2" data-testid="stat-value-4">A++</div>
+                <div className="text-muted-foreground" data-testid="stat-label-4">Accessibility</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-primary" data-testid="cta-section">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-foreground mb-4" data-testid="cta-title">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto" data-testid="cta-description">
+              Experience the elegance of brown and sepia design. Join us today and discover 
+              the perfect blend of style and functionality.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button 
+                className="px-8 py-3 bg-background text-foreground hover:bg-background/90 w-full sm:w-auto" 
+                data-testid="button-start-now"
+              >
+                Start Now
+              </Button>
+              <Button 
+                variant="outline" 
+                className="px-8 py-3 border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 w-full sm:w-auto"
+                data-testid="button-contact-us"
+              >
+                Contact Us
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-card border-t border-border py-12" data-testid="footer">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8 mb-8">
+              <div data-testid="footer-about">
+                <h3 className="font-serif font-semibold text-foreground mb-4">About</h3>
+                <p className="text-muted-foreground text-sm">
+                  A beautiful brown and sepia themed website showcasing minimal design principles.
+                </p>
+              </div>
+              <div data-testid="footer-links">
+                <h3 className="font-serif font-semibold text-foreground mb-4">Quick Links</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-home">Home</a></li>
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-about">About</a></li>
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-services">Services</a></li>
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-contact">Contact</a></li>
+                </ul>
+              </div>
+              <div data-testid="footer-resources">
+                <h3 className="font-serif font-semibold text-foreground mb-4">Resources</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-docs">Documentation</a></li>
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-support">Support</a></li>
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-privacy">Privacy</a></li>
+                  <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="footer-link-terms">Terms</a></li>
+                </ul>
+              </div>
+              <div data-testid="footer-connect">
+                <h3 className="font-serif font-semibold text-foreground mb-4">Connect</h3>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="social-link-facebook">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="social-link-twitter">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="social-link-telegram">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-border pt-8 text-center">
+              <p className="text-muted-foreground text-sm" data-testid="footer-copyright">
+                &copy; 2024 Sepia Site. All rights reserved. Designed with warmth and elegance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
