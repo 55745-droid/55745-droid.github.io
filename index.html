@@ -1,10 +1,306 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Text - Sepia Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: hsl(30, 40%, 92%);
+            color: hsl(16, 25%, 18%);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: hsl(30, 35%, 88%);
+            border-bottom: 1px solid hsl(20, 25%, 70%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(16, 25%, 18%);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: hsl(16, 15%, 35%);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: hsl(16, 25%, 18%);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, hsl(30, 40%, 92%), hsl(30, 35%, 88%));
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: hsl(16, 25%, 18%);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: hsl(16, 15%, 35%);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: hsl(16, 30%, 40%);
+            color: hsl(30, 40%, 95%);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            margin: 0.5rem;
+        }
+
+        .button:hover {
+            background-color: hsl(16, 30%, 35%);
+        }
+
+        .button-outline {
+            background-color: transparent;
+            border: 2px solid hsl(16, 30%, 40%);
+            color: hsl(16, 30%, 40%);
+        }
+
+        .button-outline:hover {
+            background-color: hsl(16, 30%, 40%);
+            color: hsl(30, 40%, 95%);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: hsl(30, 40%, 92%);
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: hsl(16, 25%, 18%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: hsl(30, 35%, 88%);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 10px 15px -3px hsl(16, 30%, 40%, 0.1);
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background-color: hsl(16, 30%, 40%);
+            color: hsl(30, 40%, 95%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: hsl(16, 25%, 18%);
+        }
+
+        .feature-card p {
+            color: hsl(16, 15%, 35%);
+        }
+
+        /* Footer */
+        footer {
+            background-color: hsl(30, 35%, 88%);
+            border-top: 1px solid hsl(20, 25%, 70%);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: hsl(16, 25%, 18%);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: hsl(16, 15%, 35%);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: hsl(16, 25%, 18%);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid hsl(20, 25%, 70%);
+            color: hsl(16, 15%, 35%);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="site-title">Sepia Site</h1>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<h1>My First Heading</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Test Text</h1>
+            <p>A clean and minimal layout featuring a beautiful brown and sepia color scheme. Designed with elegance and simplicity in mind.</p>
+            <div>
+                <a href="#" class="button">Get Started</a>
+                <a href="#" class="button button-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
 
-<p>My first paragraph.</p>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Features & Highlights</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Clean Design</h3>
+                    <p>Minimalist approach with focus on content and readability</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive</h3>
+                    <p>Fully responsive design that works beautifully on all devices</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>Sepia Tones</h3>
+                    <p>Warm, nostalgic color palette with brown and sepia hues</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>A beautiful brown and sepia themed website showcasing minimal design principles.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">Support</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sepia Site. All rights reserved. Designed with warmth and elegance.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
